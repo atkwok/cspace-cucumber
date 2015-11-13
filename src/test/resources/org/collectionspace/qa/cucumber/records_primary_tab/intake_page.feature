@@ -4,6 +4,7 @@
 @intake
 Feature: Intake Page Testing
 
+  #Check
   Scenario: Error on no Intake Entry Number
     Given user is on the "Create New" page
     And selects the "Intake" radio button on the Create New page
@@ -28,6 +29,7 @@ Feature: Intake Page Testing
     Then the titlebar should contain "test1234 - John Doe"
     And close the browser
 
+  #Incomplete
   Scenario: All fields saved on new intake record
     Given user is on the "Create New" page
     And selects the "Intake" radio button on the Create New page
@@ -40,6 +42,7 @@ Feature: Intake Page Testing
     And #After the success message appear, The newlines should still be present in text areas
     And close the browser
 
+  #Incomplete
   Scenario: All fields saved on edited intake record
     Given user is on the "Find and Edit" page
     And selects "Intake" from the top nav search record type select field
@@ -53,8 +56,10 @@ Feature: Intake Page Testing
     And #After the success message appear, The newlines should still be present in text areas
     And close the browser
 
+  #To Do
   Scenario: Integrated Vocabulary display and pivoting
 
+  #Incomplete
   Scenario: Removing values from all fields
     Given user is on the "Find and Edit" page
     And selects "Intake" from the top nav search record type select field
@@ -72,6 +77,7 @@ Feature: Intake Page Testing
     And the record should not be saved #NOT be saved
     And close the browser
 
+  #Incomplete
   Scenario: Deletion of Record
     Given user is on the "Create New" page
     And selects the "Intake" radio button on the Create New page
@@ -104,6 +110,7 @@ Feature: Intake Page Testing
     Then the search results should not contain "delete123"
     And close the browser
 
+  #Incomplete
   Scenario: Deletion of Record with Loan
     Given user is on the "Create New" page
     And selects the "Intake" radio button on the Create New page
@@ -206,11 +213,13 @@ Feature: Intake Page Testing
     Then the "Cancel Changes" button on the bottom should not be clickable
     And close the browser
 
+  #Incomplete
   Scenario: Warning on attempting to leave edited page on new intake record
     Given user is on the "Create New" page
     And selects the "Intake" radio button on the Create New page
     And clicks on the Create button
 
+  #Incomplete
   Scenario: Warning on attempting to leave edited page on edited intake record
     Given user is on the "Find and Edit" page
     And selects "Intake" from the top nav search record type select field
@@ -225,9 +234,27 @@ Feature: Intake Page Testing
     Then the error message bar should appear with "Please save the record you are creating before trying to relate other records to it"
     When user clicks on "Add" on the sidebar next to "Procedures"
     Then the error message bar should appear with "Please save the record you are creating before trying to relate other records to it"
+    And close the browser
 
   ###Keyboard Navigation###
 
+  #Incomplete
   Scenario: All fields available via the keyboard
+    Given user is on the "Create New" page
+    And selects the "Intake" radio button on the Create New page
+    And clicks on the Create button
+    And user presses "Tab"
+    Then #the first field should be accessable
+    When #user repeats pressing "Tab" on all repeatable fields
+    Then #all fields should be accessable
+    And close the browser
 
+  #Incomplete
   Scenario: Vocabulary Fields usable via keyboard only
+    Given user is on the "Create New" page
+    And selects the "Intake" radio button on the Create New page
+    And clicks on the Create button
+    And user presses "Tab" #until reaching the "Depositor" field
+    And user enters "James" in the "Depositor" field #possibly incorrect
+    Then 
+    And close the browser
