@@ -1,5 +1,5 @@
-#created by Alan Kwok at 11/15/2015
-#needs to be completed
+# Created by on Alan Kwok at 11/15/2015
+# needs to be completed
 
 @recordsprimarytab
 Feature: Loan Out Page Testing
