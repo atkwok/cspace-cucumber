@@ -111,7 +111,7 @@ Feature: Intake Page Testing
     And close the browser
 
   #Incomplete
-  Scenario: Deletion of Record with Loan
+  Scenario: Deletion of Record with Relationships
     Given user is on the "Create New" page
     And selects the "Intake" radio button on the Create New page
     And clicks on the Create button
@@ -256,5 +256,5 @@ Feature: Intake Page Testing
     And clicks on the Create button
     And user presses "Tab" #until reaching the "Depositor" field
     And user enters "James" in the "Depositor" field #possibly incorrect
-    Then 
+    Then #FINISH
     And close the browser
