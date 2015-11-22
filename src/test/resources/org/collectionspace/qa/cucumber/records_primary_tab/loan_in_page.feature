@@ -6,18 +6,18 @@ Feature: Loan In Page Testing
 
   #Check
   Scenario: Loan In Number
-  	Given user is on the "Create New" page
+    Given user is on the "Create New" page
     And selects the "Loan In" radio button on the Create New page
     And clicks on the Create button
-    And user clicks on the Save button
+    And the user saves the record
     Then the error message bar should appear with "Please specify an Loan In Number"
-    When user clicks on the "Select number pattern" button
-    And user selects "Loan In" from dropdown in "Type" row
-    Then "LI2015.1.60" should be in the "Loan In Number" field
-    #I don't know how to test the increment by one, might be wrong.
-    When user selects "Loan In" from dropdown in "Type" row
-    Then "LI2015.1.61" should be in the "Loan In Number" field
-    And close the browser
+    And user clicks on the "Select number pattern" button #Not a step def
+    And user selects "Loan In" from dropdown in "Type" row #Check
+    Then "LI201" should be in the "Loan In Number" field
+    And user clicks on the "Select number pattern" button #Not a step def
+    And user selects "Loan In" from dropdown in "Type" row #Check
+    Then "LI201" should be in the "Loan In Number" field
+    Then close the browser
   
   #Check
   Scenario: Lender and Loan In number displayed on new
