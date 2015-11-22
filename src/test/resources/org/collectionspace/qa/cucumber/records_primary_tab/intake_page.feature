@@ -49,7 +49,8 @@ Feature: Intake Page Testing
     Given user is on the "Find and Edit" page
     And selects "Intake" from the top nav search record type select field
     And clicks on the top nav search submit button
-    And #selects one of the intakes
+    And the user clicks on result with text "041319951"
+    And user fills in all the fields of the "Intake" record #Check
     #Incomplete
     And the user saves the record
     Then #A "Record successfully created" message should appear along with the current time #Not a step def
@@ -60,6 +61,8 @@ Feature: Intake Page Testing
 
   #To Do
   Scenario: Integrated Vocabulary display and pivoting
+    Given user is on the "Find and Edit" page
+    And selects "Intake" from the top nav search record type select field
 
   #Incomplete
   Scenario: Removing values from all fields
@@ -92,17 +95,14 @@ Feature: Intake Page Testing
     Then delete confirmation dialogue should appear
     And user clicks cancel button
     Then the delete confirmation dialogue should disappear
-    Then #nothing else should happen
     And user clicks on the delete button
     Then delete confirmation dialogue should appear
     And user clicks close button
     Then the delete confirmation dialogue should disappear
-    Then #nothing else should happen
     And user clicks on the delete button
     Then delete confirmation dialogue should appear
     And user clicks the confirmation delete button
     Then deletion should be confirmed in a dialogue
-    Then #you should be redirected to Find and Edit page
     And selects "Intake" from the top nav search record type select field
     And user enters "delete123" in the top nav search field
     And clicks on the top nav search submit button
@@ -124,33 +124,32 @@ Feature: Intake Page Testing
     And user selects the "Current Record" tab
     And user clicks on the delete button
     Then deletion should be confirmed in a dialogue
-    Then the deletion dialogue should contain "and its relationships" #New step def
+    Then the deletion dialogue should contain "and its relationships" #Not a step def
     And user clicks cancel button
     Then the delete confirmation dialogue should disappear
-    Then #nothing else should happen
     And user clicks on the delete button
     Then delete confirmation dialogue should appear
-    Then the deletion dialogue should contain "and its relationships"
+    Then the deletion dialogue should contain "and its relationships" #Not a step def
     And user clicks close button
     Then the delete confirmation dialogue should disappear
-    Then #nothing else should happen
     And user clicks on the delete button
     Then delete confirmation dialogue should appear
-    Then the deletion dialogue should contain "and its relationships"
+    Then the deletion dialogue should contain "and its relationships" #Not a step def
     And user clicks the confirmation delete button
     Then deletion should be confirmed in a dialogue
-    Then #you should be redirected to Find and Edit page
     And selects "Intake" from the top nav search record type select field
     And user enters "deleteloan1" in the top nav search field
     And clicks on the top nav search submit button
     Then the search results should not contain "deleteloan1"
     Then close the browser
 
+  #Does not match any existing step defs
+  #To do
   Scenario: Fold/Unfolding boxes
     Given user is on the "Create New" page
     And selects the "Intake" radio button on the Create New page
     And clicks on the Create button
-    And user clicks on the "Fold" symbol next to "Object Entry Information"
+    And user clicks on the "Fold" symbol next to "Object Entry Information" #Not a step def
     Then the "Object Entry Information" section should fold
     Then the "Fold" symbol next to "Object Entry Information" should be a folded symbol
     And user clicks on the "Fold" symbol next to "Object Entry Information"
@@ -190,54 +189,59 @@ Feature: Intake Page Testing
 
   ###Warnings###
 
+  #Missing step defs
   Scenario: Cancel Changes buttons
     Given user is on the "Find and Edit" page
     And selects "Intake" from the top nav search record type select field
     And clicks on the top nav search submit button
-    And #selects one of the intakes
+    And the user clicks on result with text "041319951"
     And user clicks the "Cancel Changes" button on the top #Not a step def
-    Then the "Cancel Changes" button on the top should not be clickable
+    Then the "Cancel Changes" button on the top should not be clickable #Not a step def
     And user clicks the "Cancel Changes" button on the bottom #Not a step def
-    Then the "Cancel Changes" button on the bottom should not be clickable
+    Then the "Cancel Changes" button on the bottom should not be clickable #Not a step def
+    And user enters "firstnote" in the "Entry Note" field
+    And the user saves the record
     And user enters "testnote" in the "Entry Note" field
     And user clicks the "Cancel Changes" button on the top #Not a step def
-    Then nothing should be in the "Entry Note" field
+    Then "firstnote" should be in the "Entry Note" field
     And user enters "testnote" in the "Entry Note" field
     And user clicks the "Cancel Changes" button on the bottom #Not a step def
-    Then nothing should be in the "Entry Note" field
+    Then "firstnote" should be in the "Entry Note" field
     And the user saves the record
     And user clicks the "Cancel Changes" button on the top #Not a step def
-    Then the "Cancel Changes" button on the top should not be clickable
+    Then the "Cancel Changes" button on the top should not be clickable #Not a step def
     And user clicks the "Cancel Changes" button on the bottom #Not a step def
-    Then the "Cancel Changes" button on the bottom should not be clickable
+    Then the "Cancel Changes" button on the bottom should not be clickable #Not a step def
     Then close the browser
 
-  #Incomplete
+  #To do
   Scenario: Warning on attempting to leave edited page on new intake record
     Given user is on the "Create New" page
     And selects the "Intake" radio button on the Create New page
     And clicks on the Create button
 
-  #Incomplete
+  #To do
   Scenario: Warning on attempting to leave edited page on edited intake record
     Given user is on the "Find and Edit" page
     And selects "Intake" from the top nav search record type select field
     And clicks on the top nav search submit button
-    And #selects one of the intakes
+    And the user clicks on result with text "041319951"
 
+  #Check
   Scenario: Warning on attempting to add related object/procedures to unsaved Intake
     Given user is on the "Create New" page
     And selects the "Intake" radio button on the Create New page
     And clicks on the Create button
-    And user clicks on "Add" on the sidebar next to "Cataloging"
+    And user clicks on "Add" in Terms Used sidebar #Check
     Then the error message bar should appear with "Please save the record you are creating before trying to relate other records to it"
-    And user clicks on "Add" on the sidebar next to "Procedures"
+    And user clicks on "Add" in Terms Used sidebar #Check
     Then the error message bar should appear with "Please save the record you are creating before trying to relate other records to it"
     Then close the browser
 
   ###Keyboard Navigation###
 
   #Incomplete
+  #Does not match any existing step defs
   Scenario: All fields available via the keyboard
     Given user is on the "Create New" page
     And selects the "Intake" radio button on the Create New page
@@ -249,6 +253,7 @@ Feature: Intake Page Testing
     Then close the browser
 
   #Incomplete
+  #Does not match any existing step defs
   Scenario: Vocabulary Fields usable via keyboard only
     Given user is on the "Create New" page
     And selects the "Intake" radio button on the Create New page
