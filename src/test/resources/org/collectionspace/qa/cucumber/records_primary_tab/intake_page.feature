@@ -1,30 +1,32 @@
 # Created by Alan Kwok on 11/6/2015
 # needs to be completed
 
-@recordsprimarytab
+@recordsprimarytab @intakepagetest
 Feature: Intake Page Testing
 
-  #Check
+  #This first scenario works.
   Scenario: Error on no Intake Entry Number
     Given user is on the "Create New" page
     And selects the "Intake" radio button on the Create New page
     And clicks on the Create button
     And clicks on the "Save" button
     Then the error message bar should appear with "Please specify an Intake Entry Number"
-    When user clicks on the "Select number pattern" button
-    And selects "Intake" from dropdown in "Type" row
-    Then "IN2015.136" should be in the "Intake Entry Number" field
-    #I don't think 136 is constant, but I don't know how to test the increment by one.
-    When user selects "Intake" from dropdown in "Type" row
-    Then "IN2015.137" should be in the "Intake Entry Number" field
-    And close the browser
+    #Works up to here
+    When user clicks Select number pattern
+    And user selects Intake from dropdown
+    Then "IN2016" should be in the field with id of ".csc-intake-entry-number"
+    #Then "IN2016" should be in the "RecordsPrimaryTab" "Intake Entry Number" field
+    When user clicks Select number pattern
+    And user selects Intake from dropdown
+    Then the Intake Entry Number should be incremented by repeating this
+    Then close the browser
 
   Scenario: Depositor and Identification number displayed on new
     Given user is on the "Create New" page
     And selects the "Intake" radio button on the Create New page
     And clicks on the Create button
-    And enters "test1234" in the "Intake Entry Number" field
-    And enters "John Doe" in the "Current Owner" field
+    And enters "test1234" in the field with id of ".csc-intake-entry-number"
+    And enters "John Doe" in the field with id of ".csc-intake-current-owner"
     And selects "John Doe" from dropdown in "John Doe" row
     Then the titlebar should contain "test1234 - John Doe"
     And close the browser
@@ -234,3 +236,5 @@ Feature: Intake Page Testing
     Then the error message bar should appear with "Please save the record you are creating before trying to relate other records to it"
     When user clicks on "Add" on the sidebar next to "Procedures"
     Then the error message bar should appear with "Please save the record you are creating before trying to relate other records to it"
+
+

@@ -480,4 +480,35 @@ public class StepDefs {
         }
         assertTrue(driver.switchTo().activeElement().equals(destinationButton));
     }
+
+    @And("^(?:the user |user )?selects Intake from dropdown$")
+    public void selects_Intake_from_dropdown() throws Throwable {
+        driver.findElement(By.id("pattern-row::pattern-name")).click();
+    }
+
+    @Then("^\"([^\"]*)\" should be in the field with id of \"([^\"]*)\"$")
+    public void text_should_be_in_the_field_with_id_of_name(String value, String fieldID) throws Throwable {
+        String textInsideField = driver.findElement(By.id(fieldID)).getAttribute("value");
+        System.out.println("PLEASE PRINT" + textInsideField);
+        assertTrue(textInsideField.indexOf(value) != -1);
+    }
+
+    @Then("^the Intake Entry Number should be incremented by repeating this$")
+    public void the_intake_entry_number_should_be_incremented_by_repeating() throws Throwable {
+        String textInsideFieldFirstTime = driver.findElement(By.id("")).getAttribute("value");
+        driver.findElement(By.className("csc-numberPatternChooser-button")).click();
+        driver.findElement(By.id("pattern-row::pattern-name")).click();
+        String textInsideFieldSecondTime = driver.findElement(By.id(".csc-intake-entry-number")).getAttribute("value");
+        int indexOfPeriodFirstTime = textInsideFieldFirstTime.indexOf('.');
+        int indexOfPeriodSecondTime = textInsideFieldSecondTime.indexOf('.');
+        assertTrue(indexOfPeriodFirstTime >= 0);
+        assertTrue(indexOfPeriodSecondTime >= 0);
+        assertTrue(textInsideFieldFirstTime.substring(0, indexOfPeriodFirstTime + 1).equals(textInsideFieldSecondTime.substring(0, indexOfPeriodFirstTime + 1)));
+        assertTrue(Integer.parseInt(textInsideFieldFirstTime.substring(indexOfPeriodFirstTime + 1)) + 1 == Integer.parseInt(textInsideFieldSecondTime.substring(indexOfPeriodSecondTime + 1)));
+    }
+
+    @And("^(?:the user |user )?enters \"([^\"]*)\" in the field with id of \"([^\"]*)\"$")
+    public void enters_value_in_the_intake_entry_number_field(String value, String fieldID) throws Throwable {
+        driver.findElement(By.id(fieldID)).sendKeys(value);
+    }
 }
