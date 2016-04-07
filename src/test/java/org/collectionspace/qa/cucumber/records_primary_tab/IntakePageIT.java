@@ -8,7 +8,7 @@ import cucumber.api.CucumberOptions;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         glue = { "org.collectionspace.qa.cucumber.stepDefinitions" },
-        tags = { "recordsprimarytab" },
+        tags = { "recordsprimarytab", "intakepage" },
         format = { "json:target/report.json" }
 )
 public class IntakePageIT {
