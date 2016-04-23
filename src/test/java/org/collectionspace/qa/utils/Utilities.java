@@ -396,6 +396,8 @@ public class Utilities {
             case "VocabularyTerms":
                 record = new VocabularyTerms();
                 break;
+            case "Intake":
+                record = new Intake();
             default:
                 throw new Exception(recordType + ": No classes of that Type known");
         }
